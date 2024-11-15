@@ -20,7 +20,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	t1 = (const unsigned char *)s1;
 	t2 = (const unsigned char *)s2;
 	if (n == 0)
-		return (0);
+		return (NULL);
 	while ((*t1 != '\0' || *t2 != '\0') && n--)
 	{
 		if (*t1 == *t2)
@@ -31,5 +31,5 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		else
 			return (*t1 - *t2);
 	}
-	return (0);
+	return (NULL);
 }
