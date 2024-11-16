@@ -6,7 +6,7 @@
 /*   By: jiseshin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:09:19 by jiseshin          #+#    #+#             */
-/*   Updated: 2024/11/10 01:10:33 by jiseshin         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:20:20 by jiseshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	total_len;
 	char	*arr;
 
+	if (!s1 || !s2)
+		return (NULL);
 	total_len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	arr = (char *)malloc(total_len);
 	if (!arr)
 		return (NULL);
-	arr = ft_strcpy(arr, s1);
-	arr = ft_strcat(arr, s2);
+	ft_strcpy(arr, (char *)s1);
+	ft_strcat(arr, (char *)s2);
 	return (arr);
 }
