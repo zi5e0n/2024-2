@@ -68,7 +68,7 @@ char	**ft_split(char const *s, char c)
 			arr[idx++] = get_word((char *)s, &i, c);
 			if (!arr[idx - 1])
 			{
-				free_memory(arr, idx);
+				memory_free(arr, idx);
 				return (NULL);
 			}
 		}
