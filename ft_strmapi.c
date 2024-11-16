@@ -6,7 +6,7 @@
 /*   By: jiseshin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:01:00 by jiseshin          #+#    #+#             */
-/*   Updated: 2024/11/15 15:49:50 by jiseshin         ###   ########.fr       */
+/*   Updated: 2024/11/16 21:34:27 by jiseshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*arr;
+	char			*arr;
 	unsigned int	i;
 
 	i = 0;

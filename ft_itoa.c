@@ -6,7 +6,7 @@
 /*   By: jiseshin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 04:48:11 by jiseshin          #+#    #+#             */
-/*   Updated: 2024/11/15 00:07:53 by jiseshin         ###   ########.fr       */
+/*   Updated: 2024/11/16 21:53:29 by jiseshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	len_count(int n)
 	return (len);
 }
 
-static char	*get_str(int n, int len)
+static char	*get_str(int n, int *len)
 {
 	char	*str;
 
@@ -49,17 +49,17 @@ static char	*get_str(int n, int len)
 	}
 	if (n < 0)
 		n = -n;
-	arr[len] = '\0';
-	len--;
-	while (len != 0 && n >= 10)
+	str[*len] = '\0';
+	(*len)--;
+	while (*len != 0 && n >= 10)
 	{
-		str[len] = n % 10 + '0';
+		str[*len] = n % 10 + '0';
 		n = n / 10;
-		len--;
+		*len--;
 	}
-	str[len] = n + '0';
-	if (len != 0)
-		str[len] = '-';
+	str[*len] = n + '0';
+	if (*len != 0)
+		str[*len] = '-';
 	return (str);
 }
 
@@ -72,6 +72,6 @@ char	*ft_itoa(int n)
 	arr = (char *)malloc(cnt);
 	if (!arr)
 		return (NULL);
-	arr = get_str(n, cnt);
+	arr = get_str(n, &cnt);
 	return (arr);
 }
