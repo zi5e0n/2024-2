@@ -20,13 +20,13 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	ar rcs $(NAME) 
+	ar rcs $(NAME) $(OBJS)
 
 clean :
 	rm -f $(OBJS)
 
-fclean :
-	rm -f $(NAME)
+fclean : clean
+	rm -f $(NAME) 
 
 re : fclean all
 
