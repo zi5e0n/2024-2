@@ -1,77 +1,69 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jiseshin <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 04:48:11 by jiseshin          #+#    #+#             */
-/*   Updated: 2024/11/16 21:53:29 by jiseshin         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-static int	len_count(int n)
+static char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+static int	get_len(int n)
 {
 	int	len;
 
-	len = 1;
-	if (n == -2147483648)
+	len = 0;
+	if (n <= 0)
+		len = 1;
+	while (n != 0)
 	{
-		len = 11;
-		return (len);
-	}
-	if (n < 0)
-	{
-		n *= -1;
 		len++;
-	}
-	if (n >= 10)
-	{
-		while (n)
-		{
-			n = n / 10;
-			len++;
-		}
+		n /= 10;
 	}
 	return (len);
 }
 
-static char	*get_str(int n, int *len)
+static char	*check_str(char *str, int n, int len)
 {
-	char	*str;
-
 	if (n == -2147483648)
 	{
-		str = "-2147483648";
+		ft_strcpy(str, "-2147483648");
 		return (str);
 	}
+	if (n == 0)
+		str[0] = '0';
 	if (n < 0)
-		n = -n;
-	str[*len] = '\0';
-	(*len)--;
-	while (*len != 0 && n >= 10)
 	{
-		str[*len] = n % 10 + '0';
-		n = n / 10;
-		*len--;
+		str[0] = '-';
+		n = -n;
 	}
-	str[*len] = n + '0';
-	if (*len != 0)
-		str[*len] = '-';
+	while (n > 0)
+	{
+		len--;
+		str[len] = n % 10 + '0';
+		n /= 10;
+	}
 	return (str);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*arr;
-	int		cnt;
+	int		len;
+	char	*str;
 
-	cnt = len_count(n) + 1;
-	arr = (char *)malloc(cnt);
-	if (!arr)
+	len = get_len(n);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
-	arr = get_str(n, &cnt);
-	return (arr);
+	str[len] = '\0';
+	str = check_str(str, n, len);
+	return (str);
 }
