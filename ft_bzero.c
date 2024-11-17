@@ -6,7 +6,7 @@
 /*   By: jiseshin <jiseshin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:47:28 by jiseshin          #+#    #+#             */
-/*   Updated: 2024/11/08 20:40:09 by jiseshin         ###   ########.fr       */
+/*   Updated: 2024/11/17 23:04:47 by jiseshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*t;
-
-	t = (unsigned char *)s;
-	while (n--)
-	{
-		t = '\0';
-		t++;
-	}
+	ft_memset(s, 0, n);
 }

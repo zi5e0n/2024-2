@@ -6,7 +6,7 @@
 /*   By: jiseshin <jiseshin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:24:07 by jiseshin          #+#    #+#             */
-/*   Updated: 2024/11/09 15:42:06 by jiseshin         ###   ########.fr       */
+/*   Updated: 2024/11/18 01:48:49 by jiseshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,24 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*t1;
-	const unsigned char	*t2;
+	unsigned char	*t1;
+	unsigned char	*t2;
+	int		i;
 
-	t1 = (const unsigned char *)s1;
-	t2 = (const unsigned char *)s2;
+	t1 = (unsigned char *)s1;
+	t2 = (unsigned char *)s2;
+	i = 0;
 	if (n == 0)
 		return (0);
-	while ((*t1 != '\0' || *t2 != '\0') && n--)
+	while (n != 0)
 	{
-		if (*t1 == *t2)
+		if (t1[i] == t2[i])
 		{
-			t1++;
-			t2++;
+			i++;
+			n--;
 		}
 		else
-			return (*t1 - *t2);
+			return (t1[i] - t2[i]);
 	}
 	return (0);
 }
